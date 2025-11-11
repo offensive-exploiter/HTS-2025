@@ -117,10 +117,18 @@ Our mission is to empower individuals to solve real-world problems, build secure
 
 ---
 
+Judges:
+Abdullah (BlackXmask)
+Uzair (BlackXmask)
+
+---
+
+
 ## 🤝 **Sponsorship & Partnership**
 We welcome **industry partners, tech orgs, and universities** to collaborate and support HTS 2025.  
 📧 **Contact:** `blackxmask.official@gmail.com`  
-🔗 [LinkedIn](https://www.linkedin.com/in/abdullah-as-12s2005)
+🔗 [LinkedIn](https://www.linkedin.com/in/abdullah-as-12s2005) ABDULLAH
+🔗 [LinkedIn](www.linkedin.com/in/muhammad-uzair-5335b0373)    UZAIR
 
 ---
 
