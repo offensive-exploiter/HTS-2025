@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submission Guide — HTS 2025</title>
+  <meta name="description" content="Submission instructions and checklist for Hack The Shield 2025." />
+  <meta name="theme-color" content="#071024" />
+  <style>
+    :root{
+      --bg-dark: #071024;
+      --card: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --text: #e7eefc;
+      --muted: rgba(231,238,252,0.62);
+      --accent-a: #00a3ff;
+      --accent-b: #8a2be2;
+      --accent-c: #ff2d95;
+      --round3: #ff7ab6; /* color for Round 3 text */
+      --radius: 12px;
+      --max-width: 1000px;
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);background:linear-gradient(180deg,#041122 0%, #071024 60%);overflow-y:auto}
+    a{color:inherit}
+    .container{max-width:var(--max-width);margin:36px auto;padding:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid var(--glass-border);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+    h1{margin:0;font-size:26px}
+    h2{font-size:18px;margin:12px 0}
+    p,li{color:var(--muted);line-height:1.5}
+    .muted{color:var(--muted)}
+    .steps{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
+    .step{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:white;font-weight:700;font-size:12px}
+    ul.check{margin:8px 0 0 18px}
+    .logos{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .logos img{width:120px;height:60px;object-fit:contain;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.015)}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent-b),var(--accent-c));color:white;text-decoration:none;font-weight:800}
+    .note{font-size:13px;color:#ffd6e8;padding:10px;border-radius:8px;background:linear-gradient(90deg, rgba(255,45,149,0.06), rgba(138,43,226,0.03));margin-top:12px}
+    .timeline{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .timeline .item{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);font-weight:700}
+    .footer{margin-top:20px;color:var(--muted);font-size:13px}
+    .round-box{margin-top:12px;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+    .round3-title{color:var(--round3); font-weight:900}
+    .monos{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace}
+    .github-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .github-links a{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;color:var(--muted);text-decoration:none;border:1px solid rgba(255,255,255,0.02)}
+    @media (max-width:720px){.logos img{width:90px;height:48px}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px">
+      <div>
+        <div class="kicker">Submission Guide</div>
+        <h1>How to submit — HTS 2025</h1>
+        <div class="muted">Clear, reliable and verifiable submissions make judging faster — follow this guide closely.</div>
+      </div>
+      <div style="text-align:right">
+        <a class="btn" href="index.html" style="background:linear-gradient(90deg,var(--accent-a),var(--accent-b))">Back to Dashboard</a>
+        <div class="muted" style="margin-top:8px">Submission window: <strong>16–20 Nov 2025 (PST)</strong></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Key dates & round schedule (PST)</h2>
+      <div class="timeline">
+        <div class="item">Submission open: 16 Nov — 20 Nov</div>
+        <div class="item" style="background:linear-gradient(90deg,var(--accent-a),var(--accent-b));">Round 1: 16 Nov</div>
+        <div class="item" style="background:linear-gradient(90deg,var(--accent-b),var(--accent-c));">Round 2: 17 Nov</div>
+        <div class="item" style="background:linear-gradient(90deg,var(--round3),rgba(255,255,255,0.02));">Round 3: 18–19 Nov</div>
+      </div>
+
+      <h2 style="margin-top:16px">Before you start — team & identity</h2>
+      <div class="steps">
+        <div class="step">
+          <strong>1. Create your team</strong>
+          <p class="muted">Teams must have exactly 2 members. Choose a professional-sounding team name (e.g., "BlueShield Labs", "NullPointerCrew"). Team names are final when you submit.</p>
+          <ul class="check">
+            <li>Confirm both members' full names</li>
+            <li>Confirm both members' contact emails</li>
+            <li>Designate a team leader for communication</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <strong>2. Identity file (REQUIRED)</strong>
+          <p class="muted">Create a single file named TEAMNAME_identity.txt or TEAMNAME_identity.png that clearly lists:</p>
+          <ul class="check">
+            <li>Team name (exact)</li>
+            <li>Member 1 — Full name & email</li>
+            <li>Member 2 — Full name & email</li>
+            <li>Team leader contact (email)</li>
+          </ul>
+          <p class="muted">Example content for TEAM_ALPHA_identity.txt:</p>
+          <pre style="background:rgba(0,0,0,0.22);padding:8px;border-radius:6px;color:var(--muted)"><code class="monos">Team: TEAM_ALPHA
+Member 1: Alice Example — alice@example.com
+Member 2: Bob Example — bob@example.com
+Team leader: alice@example.com
+</code></pre>
+        </div>
+
+        <div class="step">
+          <strong>3. What to submit</strong>
+          <p class="muted">You can submit either:</p>
+          <ul class="check">
+            <li><strong>Consolidated submission</strong> (recommended): one PDF (or ZIP) that includes
+              <ul>
+                <li>Identity file</li>
+                <li>Screenshots / evidence showing captured flags</li>
+                <li>Short report (1–2 pages) describing approaches and tools used</li>
+                <li>Links to GitHub repo (if applicable) and demo video (optional)</li>
+              </ul>
+            </li>
+            <li><strong>Per-round submissions:</strong> submit flags after each round ends (end of day). Each must include the identity file.</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <strong>4. Proof on LinkedIn</strong>
+          <p class="muted">To earn LinkedIn points, post at least one daily update on LinkedIn with:</p>
+          <ul class="check">
+            <li>A short description of what you worked on</li>
+            <li>@BlackXmask tag and the hashtag <code>#HTS2025</code></li>
+            <li>Screenshots or short clips as evidence (if applicable)</li>
+          </ul>
+          <p class="muted">Include a link to your LinkedIn post in the submission report (optional but recommended).</p>
+        </div>
+
+        <div class="step">
+          <strong>5. File naming & examples (recommended)</strong>
+          <p class="muted">Use consistent filenames so judges can quickly identify your materials:</p>
+          <ul class="check">
+            <li>TEAMNAME_identity.txt</li>
+            <li>TEAMNAME_round1_evidence.pdf</li>
+            <li>TEAMNAME_round2_evidence.zip</li>
+            <li>TEAMNAME_project_README.pdf</li>
+          </ul>
+        </div>
+
+        <div class="step">
+          <strong>6. Submission channels</strong>
+          <p class="muted">We do not provide a direct file uploader on this page. If you need to upload files to GitHub, use one of the following recommended options:</p>
+          <div class="github-links">
+            <a href="https://github.com/blackXmask/HTS-2025" target="_blank" rel="noopener noreferrer">Project repo</a>
+            <a href="https://github.com/blackXmask/HTS-2025/issues/new" target="_blank" rel="noopener noreferrer">Create an issue (attach files)</a>
+            <a href="https://github.com/blackXmask/HTS-2025/releases/new" target="_blank" rel="noopener noreferrer">Create a Release (upload ZIP)</a>
+            <a href="https://github.com/blackXmask/HTS-2025/new/main?filename=README.md" target="_blank" rel="noopener noreferrer">Create a branch / push files</a>
+          </div>
+          <p class="muted" style="margin-top:10px">Recommended GitHub flow:</p>
+          <ul class="check">
+            <li>Create a ZIP or PDF containing your identity file + evidence and upload it to a new Release (recommended), or attach it to a new Issue. Alternatively, push a branch with your submission files and open a pull request.</li>
+            <li>When using Issues, attach files (supported up to GitHub limits). Include TEAMNAME in the issue title and the identity file in the attachments.</li>
+            <li>If using Releases, create a release titled <code>HTS2025 - TEAMNAME</code> and attach your ZIP/PDF.</li>
+          </ul>
+          <div class="note">NOTE: GitHub has file size limits. If your files exceed limits, provide a downloadable link (Google Drive/Dropbox) in the Issue or Release notes and set access appropriately.</div>
+          <p class="muted" style="margin-top:8px">Other submission options: Devpost upload or email to <a href="mailto:blackxmask.official@gmail.com">blackxmask.official@gmail.com</a>.</p>
+        </div>
+
+        <div class="step">
+          <strong>7. Judging & verification</strong>
+          <p class="muted">Judges will verify flags and evidence. If we need clarifications, we will contact the team leader.</p>
+          <ul class="check">
+            <li>Provide raw screenshots and short explanations of where flags were found</li>
+            <li>Include commands used (optional) to reproduce steps</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 style="margin-top:16px">Round-specific guidance</h2>
+
+      <div class="round-box">
+        <h3 style="margin:6px 0">Round 1 — Folder Forensics / Cryptography (16 Nov)</h3>
+        <p class="muted">Locate 9 flags across a large dataset. Provide screenshots and short notes showing how each flag was found. Recommended tools: strings, binwalk, exiftool, steghide.</p>
+        <ul class="check">
+          <li>Evidence: screenshots of extraction commands and the flag string (or a highlighted image)</li>
+          <li>If using scripts, include the script or command history in the consolidated ZIP</li>
+        </ul>
+      </div>
+
+      <div class="round-box">
+        <h3 style="margin:6px 0">Round 2 — Reverse & Recover (17 Nov)</h3>
+        <p class="muted">Round 2 will run on 17 Nov. This round focuses on reversing safe challenge binaries to extract flags and understanding program behavior. Read this section carefully — Round 2 requires clear, reproducible evidence.</p>
+
+        <h4 style="margin-top:8px">What we expect</h4>
+        <ul class="check">
+          <li>Recovered flags from reversing tasks with step-by-step evidence</li>
+          <li>Short notes explaining the approach for each flag</li>
+          <li>Reproducible commands, key screenshots from the decompiler/debugger, and any small helper scripts</li>
+        </ul>
+
+        <h4 style="margin-top:8px">Recommended tools</h4>
+        <p class="muted">Use well-known reversing tools — include tool names and versions in your report:</p>
+        <ul class="check">
+          <li>Ghidra (decompiler)</li>
+          <li>IDAr Pro / IDA Free (if available)</li>
+          <li>x64dbg, x32dbg</li>
+          <li>radare2 / Cutter</li>
+          <li>strings, hexdump for quick checks</li>
+        </ul>
+
+        <h4 style="margin-top:8px">Evidence checklist for Round 2</h4>
+        <ul class="check">
+          <li>One screenshot showing the decompiled function where the flag is derived (highlighted)</li>
+          <li>One screenshot from the debugger showing the flag being printed or memory content</li>
+          <li>If you used a script to extract or decode data, include the script and a short README for it</li>
+          <li>List the exact command lines used to open the binary, run the debugger, or export strings</li>
+        </ul>
+
+        <div class="note">Tip: Name your files like <span class="monos">TEAMNAME_round2_flag1_screenshot.png</span> so judges can quickly match evidence to flags.</div>
+      </div>
+
+      <div class="round-box">
+        <h3 class="round3-title" style="margin:6px 0">Round 3 — Build a Project (18–19 Nov)</h3>
+        <p class="muted">Round 3 asks teams to build a small cybersecurity project. Submit demo video (optional), README, source code or a packaged deliverable. Provide clear setup instructions and a short report explaining design choices.</p>
+        <ul class="check">
+          <li>Deliverables: README, source code (or binary), short demo video or screenshots.</li>
+          <li>Documentation: setup steps, dependencies, and a short design / threat model note.</li>
+          <li>Packaging: prefer a ZIP or a GitHub repo link; include a release or tag for easy access.</li>
+        </ul>
+        <div class="note">Round 3 heading styled for emphasis — deliverables should be well-documented and reproducible.</div>
+      </div>
+
+      <h2 style="margin-top:16px">Submission checklist (one-page)</h2>
+      <ul class="check">
+        <li>IDENTITY file: TEAMNAME_identity.txt/png (required)</li>
+        <li>Evidence: consolidated PDF or per-round evidence files</li>
+        <li>Round 2: decompiler screenshots + debugger screenshots + scripts (if any)</li>
+        <li>Report: short summary (1–2 pages)</li>
+        <li>LinkedIn proof links (if applicable)</li>
+        <li>Contact email for team leader</li>
+      </ul>
+<!--
+<h2 style="margin-top:16px">Three logos (placeholders)</h2>
+<p class="muted">
+  You can place up to three logos (project, sponsor or team) on your report.
+  Replace the files below in your build with your real images.
+  Recommended sizes: 600x200 px (landscape) or 300x100 px.
+</p>
+<div class="logos" aria-hidden="true">
+  <img src="assets/logo-1.png" alt="Logo 1 — replace with your logo" />
+  <img src="assets/logo-2.png" alt="Logo 2 — replace with your logo" />
+  <img src="assets/logo-3.png" alt="Logo 3 — replace with your logo" />
+</div>
+-->
+
+     
+      <h2 style="margin-top:16px">FAQ / Common pitfalls</h2>
+      <ul class="check">
+        <li>Q: Can I submit flags captured after the round end? A: Yes — you can submit at the end of the round day. Consolidated submissions until 20 Nov are accepted.</li>
+        <li>Q: Do I need to include raw binaries? A: Not required; screenshots and commands are sufficient. If you include binaries, make sure they are safe and documented.</li>
+        <li>Q: What if my evidence is too large? A: Use a ZIP or a Google Drive / Dropbox link and include access instructions.</li>
+        <li>Q: What if a judge asks for clarification? A: Respond promptly to the team leader email so we can verify your work.</li>
+      </ul>
+
+      <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <a class="btn" href="mailto:blackxmask.official@gmail.com?subject=%5BHTS2025%5D%20TEAMNAME%20submission" target="_blank">Email submission (quick)</a>
+        <a class="btn" href="https://hts-2k25.devpost.com/" target="_blank" style="background:linear-gradient(90deg,var(--accent-a),var(--accent-b))">Open Devpost</a>
+      </div>
+
+      <div class="footer">
+        <p class="muted">If anything is unclear, email us at <a href="mailto:blackxmask.official@gmail.com">blackxmask.official@gmail.com</a>. Keep your identity file handy for quick verification.</p>
+        <p class="muted">Good luck — hack responsibly and have fun!</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

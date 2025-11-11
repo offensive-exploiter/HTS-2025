@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTS 2025 — Hack The Shield | BlackXmask</title>
+  <meta name="description" content="HTS 2025 — Hack The Shield. Cybersecurity hackathon by BlackXmask. Register on Devpost." />
+  <link rel="icon" href="https://github.com/user-attachments/assets/d0bc1e8d-5325-4d17-8961-49c704896230" />
+  <meta name="theme-color" content="#071024" />
+
+  <style>
+    :root{
+      --bg-dark: #071024;
+      --card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.06);
+      --text: #e7eefc;
+      --muted: rgba(231,238,252,0.62);
+      --accent-a: #00a3ff;
+      --accent-b: #8a2be2;
+      --accent-c: #ff2d95;
+      --radius: 12px;
+      --max-width: 1100px;
+      --motion-duration: 18s;
+      --ui-ease: cubic-bezier(.16,.84,.36,1);
+      --online-green: #39d353;
+    }
+
+    /* Reset + base */
+    * { box-sizing: border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:var(--text);background:var(--bg-dark);overflow-y:auto}
+    a{color:inherit}
+    img{display:block;max-width:100%;height:auto}
+    .muted { color: var(--muted); }
+
+    /* Background layers */
+    body::before{
+      content:"";
+      position:fixed;inset:0;z-index:-4;
+      background:linear-gradient(120deg,#071022 0%, #051322 25%, #071024 60%, #041016 100%);
+      transition:opacity .35s linear;
+    }
+    .animated-gradient{
+      position:fixed;inset:-20% -20% -20% -20%;z-index:-3;mix-blend-mode:screen;opacity:0.95;pointer-events:none;
+      background:linear-gradient(45deg, rgba(0,163,255,0.12), rgba(138,43,226,0.12), rgba(255,45,149,0.06));
+      background-size: 600% 600%;
+      animation:gradientShift var(--motion-duration) var(--ui-ease) infinite;
+      filter:blur(100px) contrast(1.1) saturate(1.2);
+      transition:filter .3s, transform .35s;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%}
+      25%{background-position:50% 20%}
+      50%{background-position:100% 50%}
+      75%{background-position:50% 80%}
+      100%{background-position:0% 50%}
+    }
+    .grain{position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px);background-size:3px 3px;opacity:0.25}
+    canvas.particles{position:fixed;inset:0;z-index:-1;opacity:0.65;pointer-events:none;will-change:transform}
+
+    .container{max-width:var(--max-width);margin:40px auto;padding:28px}
+
+    /* Header / Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+    @media (max-width:960px){.hero{grid-template-columns:1fr}.container{padding:16px;margin:20px auto}}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);padding:26px;border-radius:16px;box-shadow:0 12px 48px rgba(0,0,0,0.45)}
+    .hero-head{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .eyebrow{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:white;font-weight:700;font-size:13px}
+    h1{font-size:34px;margin:0;letter-spacing:-0.5px}
+    .glow{color:var(--text);text-shadow:0 10px 30px rgba(0,163,255,0.1)}
+    .sub{color:var(--muted);margin:12px 0 18px 0;line-height:1.45;min-height:42px}
+
+    /* Banner */
+    .banner{width:100%;height:160px;border-radius:12px;overflow:hidden;border:3px solid rgba(0,163,255,0.12);box-shadow: inset 0 -20px 60px rgba(0,0,0,0.35);background-size:cover;background-position:center}
+    .banner img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+    .banner:hover img{transform:scale(1.05)}
+    .banner .overlay{position:absolute;inset:0;height:100%;width:100%;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.28));display:block;pointer-events:none}
+
+    /* Logo */
+    .logo{width:160px;height:160px;border-radius:16px;border:2px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 48px rgba(0,163,255,0.16);overflow:hidden;position:relative}
+    .logo:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 28px 90px rgba(0,163,255,0.24)}
+    .logo img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block}
+    .logo .online{position:absolute;right:12px;bottom:12px;width:14px;height:14px;border-radius:999px;border:2px solid rgba(0,0,0,0.45);background:var(--online-green);box-shadow:0 0 12px rgba(57,211,8,0.12)}
+
+    /* CTA */
+    .cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .btn{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));padding:12px 18px;border-radius:12px;color:white;font-weight:800;text-decoration:none;border:none;cursor:pointer;display:inline-block}
+    .btn:hover{transform:translateY(-6px);box-shadow:0 28px 64px rgba(0,163,255,0.22)}
+    .ghost{padding:10px 14px;border-radius:12px;border:1px solid var(--glass-border);background:transparent;color:var(--muted);text-decoration:none;font-weight:700}
+
+    /* Countdown */
+    .countdown{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;align-items:center}
+    .countdown .item{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:14px 16px;border-radius:12px;min-width:88px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,0.45);display:flex;flex-direction:column;align-items:center;backdrop-filter: blur(3px);
+      transition:transform .28s, box-shadow .28s;
+    }
+    .countdown .item:hover{transform:translateY(-4px);box-shadow:0 22px 42px rgba(0,0,0,0.55)}
+    .countdown .num{font-size:28px;font-weight:900;color:var(--text);padding:2px 0;transition:transform .36s cubic-bezier(.2,.9,.3,1)}
+    .countdown .num.pop{transform:scale(1.12);color:var(--accent-a);text-shadow:0 8px 22px rgba(0,163,255,0.15)}
+    .countdown small{display:block;color:var(--muted);font-size:12px;opacity:0.95}
+
+    /* Right card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(0,0,0,0.48)}
+    .card h3{margin:0 0 8px 0}
+
+    /* Grid sections */
+    section{margin-top:22px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    .rules li{margin:8px 0}
+    .round-title{display:flex;align-items:center;gap:10px;font-weight:800}
+    .flag{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:6px 10px;border-radius:8px;font-family:monospace;color:#dbeafe}
+
+    footer{padding:26px 0;color:var(--muted);text-align:center}
+
+    .fade-in{opacity:0;transform:translateY(10px);animation:enter .7s forwards}
+    .fade-in.delay{animation-delay:.12s}
+    @keyframes enter{to{opacity:1;transform:none}}
+
+    @media (max-width:520px){
+      .logo{width:110px;height:110px}
+      .hero-card{padding:18px}
+      h1{font-size:22px}
+      .countdown .item{min-width:64px;padding:8px 10px}
+      .countdown .num{font-size:16px}
+      .countdown .num.pop{transform:none}
+    }
+
+    @keyframes pulse { 0% { transform: scale(0.9); opacity: 0.9 } 70% { transform: scale(1.4); opacity: 0 } 100% { transform: scale(1.4); opacity: 0 } }
+    .online-pulse{position:absolute;right:8px;bottom:8px;width:28px;height:28px;border-radius:50%;pointer-events:none}
+    .online-pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--online-green);opacity:0.5;filter:blur(8px);animation:pulse 1.6s infinite}
+
+    a:focus, button:focus { outline:3px solid rgba(0,163,255,0.16); outline-offset:3px; border-radius:8px }
+  </style>
+</head>
+<body>
+  <div class="animated-gradient" id="animatedGradient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="particles" id="particles" aria-hidden="true"></canvas>
+
+  <main class="container" role="main">
+    <div class="hero">
+      <div class="hero-card fade-in" id="heroCard">
+        <div class="hero-head">
+     
+          <div style="flex:1">
+            <h1 class="glow">HTS-2k25<br>Hack The Shield</h1>
+            <p class="sub muted" id="subtitle">Join BlackXmask for a hands-on, beginner-friendly to advanced cybersecurity hackathon. Win certificates, build projects, and gain mentorship.</p>
+          </div>
+        </div>
+
+
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:14px;flex-wrap:wrap">
+          <div style="min-width:220px">
+            <div class="cta" role="region" aria-label="Call to action">
+              <a class="btn" id="registerBtn" href="https://hts-2k25.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=portfolio" target="_blank" rel="noopener noreferrer">Register Now</a>
+              <a class="ghost" href="submission.html">Submission Guide</a>
+              <a class="ghost" href="mailto:blackxmask.official@gmail.com">Contact</a>
+            </div>
+
+            <div class="countdown" id="countdown" aria-live="polite" aria-atomic="true"></div>
+          </div>
+
+          <div style="display:flex;gap:12px;align-items:center;position:relative">
+            <a class="logo" title="Explore BlackXmask — GitHub" href="https://github.com/blackXmask" target="_blank" rel="noopener noreferrer" aria-label="BlackXmask profile">
+              <img src="https://github.com/blackxmask.png" alt="BlackXmask avatar" />
+              <div class="online" aria-hidden="true"></div>
+            </a>
+            <div style="text-align:right;position:relative">
+              <div style="font-weight:800;display:flex;align-items:center;gap:8px;justify-content:flex-end">
+                <span>BlackXmask</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6" fill="var(--online-green)"/></svg>
+              </div>
+              <div class="muted">Community · Cybersecurity · Learning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card fade-in delay" aria-labelledby="importantDates">
+        <h3 id="importantDates" style="margin-top:0">Important Dates (PST)</h3>
+        <p class="muted">Registration Closes: <strong>15 November 2025, 12:00 AM (PST)</strong><br>Round 1 Begins: <strong>16 November 2025, 12:00 AM (PST)</strong></p>
+
+        <hr style="border:none;height:1px;background:linear-gradient(90deg,transparent,var(--glass-border),transparent);margin:12px 0">
+
+        <h4 style="margin:6px 0">Join Us</h4>
+        <div class="socials" style="display:flex;gap:8px;flex-wrap:wrap">
+          <a href="https://hts-2k25.devpost.com/" target="_blank" rel="noopener noreferrer">Devpost</a>
+          <a href="https://www.linkedin.com/in/abdullah-as-12s2005" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.youtube.com/@ah_blackmask" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://tiktok.com/@blackxmask03" target="_blank" rel="noopener noreferrer">TikTok</a>
+        </div>
+
+        <hr style="border:none;height:1px;background:linear-gradient(90deg,transparent,var(--glass-border),transparent);margin:12px 0">
+        <div class="muted">Team size: <strong>2</strong><br>Duration: <strong>3–5 days</strong></div>
+      </aside>
+    </div>
+
+    <!-- Sections: Overview, Rounds, Rules -->
+    <section class="grid">
+      <div class="card fade-in">
+        <h3>Overview</h3>
+        <p class="muted">HTS 2025 is designed to give participants practical experience across forensics, reversing, and project development. Everyone is welcome! No prior experience required.</p>
+
+        <h4 style="margin-bottom:6px">Scoring</h4>
+        <ul>
+          <li>Challenge rounds (flags/reversing): 50 pts</li>
+          <li>Project development: 30 pts</li>
+          <li>LinkedIn activity: 10 pts</li>
+          <li>Report/documentation: 10 pts</li>
+        </ul>
+      </div>
+
+      <div class="card fade-in delay">
+        <h3>Rules</h3>
+        <ol class="rules">
+          <li>Everyone is welcomed and respected.</li>
+          <li>Teams must consist of <strong>exactly 2 members</strong>.</li>
+          <li>Submissions must be original work.</li>
+          <li>Daily LinkedIn posts required for the LinkedIn score.</li>
+          <li>Reports must follow the official format.</li>
+          <li>Organizers’ decisions are final.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="fade-in">
+      <h3>Rounds</h3>
+      <div class="grid" style="margin-top:8px">
+        <div class="card">
+          <div class="round-title">Round 1 — Folder Forensics / Cryptography <span class="flag">Beginner</span></div>
+          <p class="muted">Find 9 flags across a large dataset. Tools: strings, steghide, binwalk, exiftool. Time: 60–90 minutes.</p>
+        </div>
+
+        <div class="card">
+          <div class="round-title">Round 2 — Reverse & Recover <span class="flag">Intermediate</span></div>
+          <p class="muted">Reverse safe Windows executables to extract flags. Tools allowed: Ghidra, IDA Free, x64dbg, radare2. Time: 2–3 hours.</p>
+        </div>
+
+        <div class="card">
+          <div class="round-title">Round 3 — Build a Project <span class="flag">Advanced</span></div>
+          <p class="muted">Build a cybersecurity-related mini-project. Demo + README + short report. Judging focuses on functionality, originality, code quality, documentation, and presentation.</p>
+        </div>
+
+        <div class="card">
+          <div style="font-weight:800">Prizes & Recognition</div>
+          <p class="muted">Top teams receive official certificates and online exposure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in">
+      <h3>Contact & Follow</h3>
+      <p class="muted">For sponsorships, contact <a href="mailto:blackxmask.official@gmail.com" style="color:var(--text);text-decoration:underline">blackxmask.official@gmail.com</a>.</p>
+      <div class="socials" style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://tiktok.com/@blackxmask03" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://whatsapp.com/channel/0029Vb5zVHiDTkK4DQoYQS3q" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.youtube.com/@ah_blackmask" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.linkedin.com/in/abdullah-as-12s2005" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer class="fade-in" style="margin-top:26px">
+      <small>“Hack. Learn. Build. Protect.” — Proudly presented by BlackXmask</small>
+    </footer>
+  </main>
+
+  <div class="controls">
+    <div class="control-toggle">
+      <button id="presetBtn" class="control-btn" title="Cycle gradient" type="button">Gradient</button>
+      <button id="pauseAnim" class="control-btn" title="Pause animations" type="button">Pause</button>
+    </div>
+  </div>
+
+  <script>
+    // Countdown timer for "time left" (shows Days / Hours / Minutes / Seconds)
+    (function () {
+      // Registration close target (PST is UTC-8)
+      const registrationClose = new Date('2025-11-15T00:00:00-08:00'); // 15 Nov 2025 00:00 PST
+      const countdownEl = document.getElementById('countdown');
+
+      // Create UI blocks: days / hours / minutes / seconds
+      const parts = [
+        { key: 'days', label: 'Days' },
+        { key: 'hours', label: 'Hours' },
+        { key: 'minutes', label: 'Minutes' },
+        { key: 'seconds', label: 'Seconds' }
+      ];
+      const partEls = {};
+      parts.forEach(p => {
+        const item = document.createElement('div');
+        item.className = 'item';
+        item.setAttribute('data-key', p.key);
+
+        const num = document.createElement('div');
+        num.className = 'num';
+        num.textContent = '00';
+
+        const small = document.createElement('small');
+        small.textContent = p.label;
+
+        item.appendChild(num);
+        item.appendChild(small);
+        countdownEl.appendChild(item);
+
+        partEls[p.key] = { item, num };
+      });
+
+      function getDiffParts(targetDate) {
+        const now = new Date();
+        let diff = Math.max(0, targetDate - now);
+
+        const secondsTotal = Math.floor(diff / 1000);
+        const days = Math.floor(secondsTotal / 86400);
+        const hours = Math.floor((secondsTotal % 86400) / 3600);
+        const minutes = Math.floor((secondsTotal % 3600) / 60);
+        const seconds = secondsTotal % 60;
+        return { days, hours, minutes, seconds, totalMs: diff };
+      }
+
+      function pop(el) {
+        el.classList.add('pop');
+        clearTimeout(el._popTimeout);
+        el._popTimeout = setTimeout(() => el.classList.remove('pop'), 420);
+      }
+
+      let prev = { days: null, hours: null, minutes: null, seconds: null };
+      function update() {
+        const d = getDiffParts(registrationClose);
+        ['days','hours','minutes','seconds'].forEach(k => {
+          const value = d[k];
+          if (prev[k] !== value) {
+            partEls[k].num.textContent = String(value).padStart(2, '0');
+            pop(partEls[k].num);
+            prev[k] = value;
+          }
+        });
+
+        if (d.totalMs <= 0) {
+          // registration closed - show message
+          countdownEl.innerHTML = '';
+          const closedItem = document.createElement('div');
+          closedItem.className = 'item';
+          closedItem.style.minWidth = 'auto';
+          closedItem.style.padding = '14px 16px';
+          const closedText = document.createElement('div');
+          closedText.style.fontWeight = '800';
+          closedText.textContent = 'Registration closed';
+          const nextSmall = document.createElement('small');
+          nextSmall.textContent = 'Rounds begin soon — check schedule';
+          closedItem.appendChild(closedText);
+          closedItem.appendChild(nextSmall);
+          countdownEl.appendChild(closedItem);
+        }
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+
+    // Minimal interactive controls for gradient/pause (purely visual)
+    const anim = document.getElementById('animatedGradient');
+    const presetBtn = document.getElementById('presetBtn');
+    const pauseBtn = document.getElementById('pauseAnim');
+    let paused = false;
+
+    presetBtn?.addEventListener('click', () => {
+      anim.style.filter = anim.style.filter ? '' : 'saturate(1.25) contrast(1.05)';
+      presetBtn.textContent = anim.style.filter ? 'Restore' : 'Enhance';
+    });
+
+    pauseBtn?.addEventListener('click', () => {
+      paused = !paused;
+      anim.style.animationPlayState = paused ? 'paused' : 'running';
+      pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+    });
+
+    // Simple staggered fade-in
+    document.querySelectorAll('.fade-in').forEach((el, i) => {
+      el.style.animationDelay = (i * 0.06) + 's';
+    });
+  </script>
+</body>
+</html>
