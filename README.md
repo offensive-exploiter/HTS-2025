@@ -118,7 +118,7 @@ Our mission is to empower individuals to solve real-world problems, build secure
 ---
 
 Judges:
-Abdullah (BlackXmask)
+Abdullah (BlackXmask) ,
 Uzair (BlackXmask)
 
 ---
